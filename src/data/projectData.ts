@@ -14,7 +14,7 @@ export const projectsData: Project[] = [
     location: "Addis Ababa, Ethiopia",
     year: "2025",
     scale: "120,000 m²",
-    image: "/src/assets/images/yacae_civic_center_1784558368652.jpg",
+    image: "/images/yacae_civic_center_1784558368652.jpg",
     description: "A monumental civic intervention that blends modern sculptural concrete forms with historic architectural references. The project serves as the legislative, administrative, and public heart of the district, featuring passive cooling facades, integrated water features, and porous pedestrian pathways.",
     architects: "Yohannes Abbay, Chief Architect",
     highlights: [
@@ -38,7 +38,7 @@ export const projectsData: Project[] = [
     location: "Addis Ababa, Ethiopia",
     year: "2024",
     scale: "185,000 m²",
-    image: "/src/assets/images/yacae_hero_building_1784558352200.jpg",
+    image: "/images/yacae_hero_building_1784558352200.jpg",
     description: "An iconic silhouette rising from the central financial district. Inspired by the timeless verticality of traditional Ethiopian stone monolithic stelae, this structure implements cutting-edge double-skin active breathing facade technology to achieve climate-adapted interior comfort with minimal reliance on heating and cooling systems.",
     architects: "YACAE High-Rise Studio & Partners",
     highlights: [
@@ -62,7 +62,7 @@ export const projectsData: Project[] = [
     location: "Addis Ababa, Ethiopia",
     year: "2026",
     scale: "35,000 m²",
-    image: "/src/assets/images/yacae_museum_1784558383744.jpg",
+    image: "/images/yacae_museum_1784558383744.jpg",
     description: "A series of interlocking, sweeping structures that emulate the geological rifting of East Africa. The building hosts vast exhibition spaces, state-of-the-art climate-controlled preservation galleries, and performance stages that interact with natural shadows and changing daylight patterns.",
     architects: "Senior Partner Abbay Tekle",
     highlights: [
@@ -108,7 +108,7 @@ export const insightsData: Insight[] = [
     category: "Research",
     date: "July 12, 2026",
     readTime: "9 min read",
-    image: "/src/assets/images/yacae_drafting_desk_1784558399848.jpg",
+    image: "/images/yacae_drafting_desk_1784558399848.jpg",
     author: "Dr. Yohannes Abbay",
     summary: "An in-depth study of structural shading and passive cooling strategies tailored for high-altitude zones like Addis Ababa, avoiding mechanical refrigeration in corporate structures.",
     content: [
@@ -123,7 +123,7 @@ export const insightsData: Insight[] = [
     category: "Engineering",
     date: "June 04, 2026",
     readTime: "7 min read",
-    image: "/src/assets/images/yacae_hero_building_1784558352200.jpg",
+    image: "/images/yacae_hero_building_1784558352200.jpg",
     author: "Ing. Abbay Tekle, Lead Structural Engineer",
     summary: "Breaking down the dynamic structural engineering, seismic dampening, and aerodynamic optimization of YACAE's premier high-rise skyscrapers.",
     content: [
@@ -138,7 +138,7 @@ export const insightsData: Insight[] = [
     category: "Sustainability",
     date: "May 18, 2026",
     readTime: "6 min read",
-    image: "/src/assets/images/yacae_civic_center_1784558368652.jpg",
+    image: "/images/yacae_civic_center_1784558368652.jpg",
     author: "Hana Kebede, Sustainability Lead",
     summary: "Exploring our breakthroughs in locally sourced building materials, volcanic ash pozzolans, and lowering carbon footprint in commercial structures.",
     content: [

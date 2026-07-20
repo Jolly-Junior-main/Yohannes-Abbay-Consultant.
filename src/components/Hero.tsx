@@ -20,7 +20,7 @@ export default function Hero({ onScrollToExplore, onSubmitRFPClick }: HeroProps)
       {/* Immersive Background Image with Parallax & Dark Gradients */}
       <div className="absolute inset-0 z-0 select-none">
         <img
-          src="/src/assets/images/yacae_hero_building_1784558352200.jpg"
+          src="/images/yacae_hero_building_1784558352200.jpg"
           alt="CBE Heights Skyscrapers"
           className="w-full h-full object-cover object-center scale-105 filter brightness-90 saturate-75 opacity-60 transition-transform duration-1000"
           referrerPolicy="no-referrer"
