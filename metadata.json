@@ -1,0 +1,6 @@
+{
+  "name": "YACAE Architecture",
+  "description": "Redesigned digital flagship for Yohannes Abbay Consulting Architects & Engineers (YACAE). A sophisticated, minimalist homepage featuring editorial project storytelling, interactive metrics, and integrated RFP submissions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
