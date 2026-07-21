@@ -7,6 +7,7 @@ import React from "react";
 import { BookOpen, ArrowRight, ShieldCheck, Cpu, Leaf } from "lucide-react";
 import { insightsData } from "../data/projectData";
 import { Insight } from "../types";
+import { getAssetPath } from "./FeaturedProjects";
 
 interface InsightsProps {
   theme?: "light" | "dark";
@@ -76,7 +77,7 @@ export default function Insights({ theme = "dark", onInsightClick }: InsightsPro
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
               <img
-                src={featuredInsight.image}
+                src={getAssetPath(featuredInsight.image)}
                 alt={featuredInsight.title}
                 className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-102 transition-all duration-700"
                 referrerPolicy="no-referrer"

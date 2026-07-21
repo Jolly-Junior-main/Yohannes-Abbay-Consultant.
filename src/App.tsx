@@ -16,7 +16,7 @@ import Footer from "./components/Footer";
 import { Project, Insight } from "./types";
 
 export default function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [isRFPModalOpen, setIsRFPModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedInsight, setSelectedInsight] = useState<Insight | null>(null);

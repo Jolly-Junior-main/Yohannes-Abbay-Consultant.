@@ -8,6 +8,17 @@ import { ArrowUpRight, MapPin, Sparkles } from "lucide-react";
 import { projectsData } from "../data/projectData";
 import { Project } from "../types";
 
+// Helper function to resolve asset paths relative to Vite BASE_URL for robust GitHub / Subdirectory deployments
+export const getAssetPath = (path: string): string => {
+  if (!path) return "";
+  if (path.startsWith("/")) {
+    const base = (import.meta as any).env?.BASE_URL || "/";
+    const cleanBase = base.endsWith("/") ? base : `${base}/`;
+    return `${cleanBase}${path.substring(1)}`;
+  }
+  return path;
+};
+
 interface FeaturedProjectsProps {
   theme?: "light" | "dark";
   onProjectClick: (project: Project) => void;
@@ -16,7 +27,8 @@ interface FeaturedProjectsProps {
 export default function FeaturedProjects({ theme = "dark", onProjectClick }: FeaturedProjectsProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = ["All", "Civic & Cultural", "High-Rise & Corporate", "Landmark & Cultural"];
+  // Dynamically extract categories to ensure newly added projects' categories are filterable
+  const categories = ["All", ...Array.from(new Set(projectsData.map(p => p.category)))];
 
   const filteredProjects = selectedCategory === "All"
     ? projectsData
@@ -83,31 +95,15 @@ export default function FeaturedProjects({ theme = "dark", onProjectClick }: Fea
           </div>
         </div>
 
-        {/* Asymmetrical Project Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-16 lg:gap-x-12 items-stretch">
-          {filteredProjects.map((project, index) => {
-            const isFirst = index === 0;
-            const isSecond = index === 1;
-            const isThird = index === 2;
-
-            let colClass = "lg:col-span-12";
-            let imageRatioClass = "aspect-[16/10]";
-
-            if (isFirst) {
-              colClass = "lg:col-span-7";
-              imageRatioClass = "aspect-[4/3] lg:aspect-[16/11]";
-            } else if (isSecond) {
-              colClass = "lg:col-span-5 lg:mt-12"; // offset downward on desktop
-              imageRatioClass = "aspect-[4/3] lg:aspect-[16/13]";
-            } else if (isThird) {
-              colClass = "lg:col-span-12 lg:mt-16";
-              imageRatioClass = "aspect-[16/9]";
-            }
+        {/* Clean, ordered 2 projects per row grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 items-stretch">
+          {filteredProjects.map((project) => {
+            const imageRatioClass = "aspect-[16/10]";
 
             return (
               <div
                 key={project.id}
-                className={`${colClass} flex flex-col group cursor-pointer`}
+                className="flex flex-col group cursor-pointer"
                 onClick={() => onProjectClick(project)}
               >
                 {/* Image Wrap */}
@@ -122,7 +118,7 @@ export default function FeaturedProjects({ theme = "dark", onProjectClick }: Fea
                   </div>
 
                   <img
-                    src={project.image}
+                    src={getAssetPath(project.image)}
                     alt={project.subtitle}
                     className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                     referrerPolicy="no-referrer"

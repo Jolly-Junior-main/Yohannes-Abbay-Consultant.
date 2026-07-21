@@ -6,6 +6,7 @@
 import React from "react";
 import { X, Calendar, MapPin, Layers, Award, FileText, CheckCircle, Info, ArrowRight } from "lucide-react";
 import { Project, Insight } from "../types";
+import { getAssetPath } from "./FeaturedProjects";
 
 interface ProjectDetailModalProps {
   theme?: "light" | "dark";
@@ -76,7 +77,7 @@ export default function ProjectDetailModal({
                   isLight ? "bg-stone-100 border-stone-200" : "bg-charcoal-900 border-white/5"
                 }`}>
                   <img
-                    src={project.image}
+                    src={getAssetPath(project.image)}
                     alt={project.title}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
@@ -321,7 +322,7 @@ export default function ProjectDetailModal({
                 {/* Banner Image */}
                 <div className="relative h-64 md:h-80 w-full overflow-hidden rounded-sm bg-charcoal-900 border border-white/5">
                   <img
-                    src={insight.image}
+                    src={getAssetPath(insight.image)}
                     alt={insight.title}
                     className="w-full h-full object-cover grayscale brightness-90"
                     referrerPolicy="no-referrer"
