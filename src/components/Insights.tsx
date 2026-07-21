@@ -3,16 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import React from "react";
 import { BookOpen, ArrowRight, ShieldCheck, Cpu, Leaf } from "lucide-react";
 import { insightsData } from "../data/projectData";
 import { Insight } from "../types";
 
 interface InsightsProps {
+  theme?: "light" | "dark";
   onInsightClick: (insight: Insight) => void;
 }
 
-export default function Insights({ onInsightClick }: InsightsProps) {
+export default function Insights({ theme = "dark", onInsightClick }: InsightsProps) {
   // We'll set the first insight (Research Paper) as the massive feature on the left,
   // and the remaining insights as stacked editorial cards on the right.
   const featuredInsight = insightsData[0];
@@ -32,10 +33,19 @@ export default function Insights({ onInsightClick }: InsightsProps) {
     }
   };
 
+  const isLight = theme === "light";
+
   return (
-    <section id="insights" className="py-24 bg-charcoal-950 border-b border-white/5 relative">
+    <section
+      id="insights"
+      className={`py-24 transition-colors duration-500 relative ${
+        isLight ? "bg-white border-b border-stone-200" : "bg-charcoal-950 border-b border-white/5"
+      }`}
+    >
       {/* Decorative Blueprint Corner Grid Lines */}
-      <div className="absolute top-0 right-0 w-32 h-32 border-b border-l border-white/5 pointer-events-none"></div>
+      <div className={`absolute top-0 right-0 w-32 h-32 border-b border-l pointer-events-none transition-colors duration-500 ${
+        isLight ? "border-stone-200" : "border-white/5"
+      }`}></div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
@@ -43,10 +53,14 @@ export default function Insights({ onInsightClick }: InsightsProps) {
           <p className="text-xs font-mono tracking-[0.3em] text-bronze uppercase font-semibold mb-3">
             SCHOLARLY AUTHORITY
           </p>
-          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-white font-medium tracking-tight">
+          <h2 className={`font-serif text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight transition-colors duration-500 ${
+            isLight ? "text-charcoal-900" : "text-white"
+          }`}>
             Insights & Innovation
           </h2>
-          <p className="mt-4 text-sm md:text-base font-sans font-light tracking-wide text-charcoal-400 leading-relaxed">
+          <p className={`mt-4 text-sm md:text-base font-sans font-light tracking-wide leading-relaxed transition-colors duration-500 ${
+            isLight ? "text-charcoal-600" : "text-charcoal-400"
+          }`}>
             Architectural practice is a form of scientific and cultural research. Review our latest peer-reviewed publications, structural engineering breakthroughs, and sustainable material audits.
           </p>
         </div>
@@ -83,7 +97,7 @@ export default function Insights({ onInsightClick }: InsightsProps) {
             </div>
 
             {/* Bottom Content Card - glassmorphic overlay */}
-            <div className="relative z-20 p-6 md:p-8 m-6 bg-charcoal-950/80 backdrop-blur-md border border-white/10 rounded-sm">
+            <div className="relative z-20 p-6 md:p-8 m-6 bg-charcoal-950/85 backdrop-blur-md border border-white/10 rounded-sm">
               <span className="text-[10px] font-mono tracking-widest text-bronze uppercase">
                 FEATURED THOUGHT LEADERSHIP
               </span>
@@ -93,7 +107,7 @@ export default function Insights({ onInsightClick }: InsightsProps) {
               <p className="mt-3 text-xs md:text-sm font-sans font-light text-charcoal-400 leading-relaxed">
                 {featuredInsight.summary}
               </p>
-              <div className="mt-5 flex items-center space-x-2 text-xs font-sans font-bold text-bronze uppercase tracking-widest group-hover:text-white transition-colors duration-300">
+              <div className="mt-5 flex items-center space-x-2 text-xs font-sans font-bold text-bronze uppercase tracking-widest group-hover:text-bronze-light transition-colors duration-300">
                 <span>OPEN TECHNICAL DOCUMENT</span>
                 <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
               </div>
@@ -108,7 +122,11 @@ export default function Insights({ onInsightClick }: InsightsProps) {
                 <div
                   key={insight.id}
                   onClick={() => onInsightClick(insight)}
-                  className="group bg-charcoal-900 border border-white/5 rounded-sm p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-bronze/30 transition-all duration-300 cursor-pointer hover:bg-charcoal-900/80"
+                  className={`group border rounded-sm p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 transition-all duration-300 cursor-pointer ${
+                    isLight
+                      ? "bg-stone-50 border-stone-200 hover:bg-stone-100 hover:border-bronze/30 shadow-sm"
+                      : "bg-charcoal-900 border-white/5 hover:bg-charcoal-900/80 hover:border-bronze/30"
+                  }`}
                 >
                   <div className="space-y-3 max-w-xl">
                     <div className="flex items-center space-x-3">
@@ -116,27 +134,39 @@ export default function Insights({ onInsightClick }: InsightsProps) {
                         {getCategoryIcon(insight.category)}
                         <span>{insight.category}</span>
                       </span>
-                      <span className="text-white/20 text-xs">•</span>
-                      <span className="text-[10px] font-mono text-charcoal-400">
+                      <span className={`text-xs ${isLight ? "text-stone-300" : "text-white/20"}`}>•</span>
+                      <span className={`text-[10px] font-mono transition-colors duration-500 ${
+                        isLight ? "text-charcoal-500" : "text-charcoal-400"
+                      }`}>
                         {insight.date}
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-xl text-white font-medium tracking-tight group-hover:text-bronze transition-colors duration-300">
+                    <h3 className={`font-serif text-xl font-medium tracking-tight group-hover:text-bronze transition-colors duration-300 ${
+                      isLight ? "text-charcoal-900" : "text-white"
+                    }`}>
                       {insight.title}
                     </h3>
 
-                    <p className="text-xs md:text-sm font-sans font-light text-charcoal-400 leading-relaxed line-clamp-2">
+                    <p className={`text-xs md:text-sm font-sans font-light leading-relaxed line-clamp-2 transition-colors duration-500 ${
+                      isLight ? "text-charcoal-600" : "text-charcoal-400"
+                    }`}>
                       {insight.summary}
                     </p>
 
-                    <div className="text-[10px] font-mono text-charcoal-400">
-                      Authored by <span className="text-charcoal-200">{insight.author}</span>
+                    <div className={`text-[10px] font-mono transition-colors duration-500 ${
+                      isLight ? "text-charcoal-500" : "text-charcoal-400"
+                    }`}>
+                      Authored by <span className={isLight ? "text-charcoal-800" : "text-charcoal-200"}>{insight.author}</span>
                     </div>
                   </div>
 
                   {/* Icon indicator */}
-                  <div className="w-10 h-10 rounded-full border border-white/5 bg-charcoal-950 flex items-center justify-center text-charcoal-400 group-hover:text-bronze group-hover:border-bronze transition-all duration-300 shrink-0">
+                  <div className={`w-10 h-10 rounded-full border flex items-center justify-center group-hover:text-bronze group-hover:border-bronze transition-all duration-300 shrink-0 ${
+                    isLight
+                      ? "bg-white border-stone-200 text-charcoal-500 shadow-sm"
+                      : "bg-charcoal-950 border-white/5 text-charcoal-400"
+                  }`}>
                     <ArrowRight size={16} />
                   </div>
                 </div>
@@ -144,12 +174,16 @@ export default function Insights({ onInsightClick }: InsightsProps) {
             </div>
 
             {/* Secondary Publication Link Bar */}
-            <div className="border border-dashed border-white/10 rounded-sm p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className={`border border-dashed rounded-sm p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-500 ${
+              isLight ? "border-stone-300 bg-stone-50" : "border-white/10"
+            }`}>
               <div className="space-y-1">
                 <div className="text-xs font-mono text-bronze uppercase font-semibold tracking-wider">
                   YACAE STRUCTURAL JOURNAL v14
                 </div>
-                <p className="text-xs font-sans font-light text-charcoal-400">
+                <p className={`text-xs font-sans font-light transition-colors duration-500 ${
+                  isLight ? "text-charcoal-600" : "text-charcoal-400"
+                }`}>
                   Access the full archived index of 14+ architectural scholarship issues.
                 </p>
               </div>
@@ -157,10 +191,13 @@ export default function Insights({ onInsightClick }: InsightsProps) {
                 href="#journal-archive"
                 onClick={(e) => {
                   e.preventDefault();
-                  // Mock showing first insight for archive or showing a visual feedback
                   onInsightClick(featuredInsight);
                 }}
-                className="px-4 py-2 bg-charcoal-950 border border-white/10 text-xs font-sans text-white uppercase tracking-widest hover:border-bronze hover:text-bronze transition-all duration-300 shrink-0 rounded-sm text-center"
+                className={`px-4 py-2 border text-xs font-sans uppercase tracking-widest hover:border-bronze hover:text-bronze transition-all duration-300 shrink-0 rounded-sm text-center ${
+                  isLight
+                    ? "bg-white border-stone-200 text-charcoal-800 shadow-sm"
+                    : "bg-charcoal-950 border-white/10 text-white"
+                }`}
               >
                 BROWSE ARCHIVES
               </a>

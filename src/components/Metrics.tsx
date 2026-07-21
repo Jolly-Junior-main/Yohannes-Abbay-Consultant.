@@ -5,9 +5,13 @@
 
 import React, { useState } from "react";
 import { metricsData } from "../data/projectData";
-import { Award, Target, Landmark, Percent, PieChart, LandmarkIcon } from "lucide-react";
+import { Award, Target, Landmark, LandmarkIcon } from "lucide-react";
 
-export default function Metrics() {
+interface MetricsProps {
+  theme?: "light" | "dark";
+}
+
+export default function Metrics({ theme = "dark" }: MetricsProps) {
   const [activeMetricId, setActiveMetricId] = useState<string>("years");
 
   // Detailed breakdowns for each metric to make this stats ribbon interactive and satisfying
@@ -64,13 +68,21 @@ export default function Metrics() {
   };
 
   const activeDetail = metricDetails[activeMetricId];
+  const isLight = theme === "light";
 
   return (
-    <section id="expertise" className="bg-charcoal-950 border-t border-b border-white/5 relative overflow-hidden">
+    <section
+      id="expertise"
+      className={`transition-colors duration-500 relative overflow-hidden ${
+        isLight ? "bg-stone-50 border-t border-b border-stone-200" : "bg-charcoal-950 border-t border-b border-white/5"
+      }`}
+    >
       {/* Background radial highlight */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-bronze/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-[100px] pointer-events-none ${
+        isLight ? "bg-bronze/3" : "bg-bronze/5"
+      }`}></div>
 
-      {/* Primary Stats Ribbon */}
+      {/* Primary Stats Ribbon (Remains beautifully dark for rich corporate density, matching the screenshot layout!) */}
       <div className="bg-charcoal-900 border-b border-white/5 py-16 md:py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-white/5">
@@ -105,7 +117,7 @@ export default function Metrics() {
         </div>
       </div>
 
-      {/* Interactive Metric Detail Reveal Panel */}
+      {/* Interactive Metric Detail Reveal Panel (Toggles background and text colors based on the active theme) */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Text Summary Left */}
@@ -113,21 +125,34 @@ export default function Metrics() {
             <span className="text-[10px] font-mono tracking-[0.3em] text-bronze uppercase font-semibold">
               SPECIFICATION DEPTH
             </span>
-            <h3 className="font-serif text-2xl md:text-4xl text-white font-medium tracking-tight">
+            <h3 className={`font-serif text-2xl md:text-4xl font-medium tracking-tight transition-colors duration-500 ${
+              isLight ? "text-charcoal-900" : "text-white"
+            }`}>
               {activeDetail.title}
             </h3>
-            <p className="text-sm md:text-base font-sans font-light text-charcoal-400 leading-relaxed">
+            <p className={`text-sm md:text-base font-sans font-light leading-relaxed transition-colors duration-500 ${
+              isLight ? "text-charcoal-600" : "text-charcoal-400"
+            }`}>
               {activeDetail.subtitle}
             </p>
 
             {/* Scale ratios chart element */}
             <div className="pt-6 grid grid-cols-3 gap-4">
               {activeDetail.stats.map((stat, i) => (
-                <div key={i} className="border-l border-white/10 pl-4 py-2">
-                  <div className="font-serif text-xl md:text-2xl text-white font-medium">
+                <div
+                  key={i}
+                  className={`border-l pl-4 py-2 transition-colors duration-500 ${
+                    isLight ? "border-stone-200" : "border-white/10"
+                  }`}
+                >
+                  <div className={`font-serif text-xl md:text-2xl font-medium transition-colors duration-500 ${
+                    isLight ? "text-charcoal-900" : "text-white"
+                  }`}>
                     {stat.value}
                   </div>
-                  <div className="text-[10px] font-mono tracking-wider text-charcoal-400 uppercase mt-1">
+                  <div className={`text-[10px] font-mono tracking-wider uppercase mt-1 transition-colors duration-500 ${
+                    isLight ? "text-charcoal-500" : "text-charcoal-400"
+                  }`}>
                     {stat.label}
                   </div>
                 </div>
@@ -136,19 +161,31 @@ export default function Metrics() {
           </div>
 
           {/* Interactive features timeline Right */}
-          <div className="lg:col-span-7 bg-charcoal-900/50 border border-white/5 rounded-sm p-6 md:p-10 space-y-6 md:space-y-8 glass-card">
+          <div className={`lg:col-span-7 border rounded-sm p-6 md:p-10 space-y-6 md:space-y-8 transition-all duration-500 ${
+            isLight
+              ? "bg-white border-stone-200 shadow-sm"
+              : "bg-charcoal-900/50 border-white/5 glass-card"
+          }`}>
             {activeDetail.highlights.map((highlight, index) => {
               const Icon = highlight.icon;
               return (
                 <div key={index} className="flex items-start space-x-6 group/item">
-                  <div className="w-12 h-12 rounded-sm border border-white/10 bg-charcoal-950 flex items-center justify-center text-bronze group-hover/item:border-bronze group-hover/item:text-white transition-all duration-300 shrink-0">
+                  <div className={`w-12 h-12 rounded-sm border flex items-center justify-center text-bronze group-hover/item:text-white transition-all duration-300 shrink-0 ${
+                    isLight
+                      ? "border-stone-200 bg-stone-50 group-hover/item:border-bronze group-hover/item:bg-bronze"
+                      : "border-white/10 bg-charcoal-950 group-hover/item:border-bronze group-hover/item:bg-bronze"
+                  }`}>
                     <Icon size={20} />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-serif text-lg text-white font-medium group-hover/item:text-bronze transition-colors">
+                    <h4 className={`font-serif text-lg font-medium group-hover/item:text-bronze transition-colors ${
+                      isLight ? "text-charcoal-900" : "text-white"
+                    }`}>
                       {highlight.title}
                     </h4>
-                    <p className="text-xs md:text-sm font-sans font-light text-charcoal-400 leading-relaxed">
+                    <p className={`text-xs md:text-sm font-sans font-light leading-relaxed transition-colors duration-500 ${
+                      isLight ? "text-charcoal-600" : "text-charcoal-400"
+                    }`}>
                       {highlight.desc}
                     </p>
                   </div>

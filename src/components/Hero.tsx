@@ -7,11 +7,12 @@ import React from "react";
 import { ArrowDown, CornerDownRight } from "lucide-react";
 
 interface HeroProps {
+  theme?: "light" | "dark";
   onScrollToExplore: () => void;
   onSubmitRFPClick: () => void;
 }
 
-export default function Hero({ onScrollToExplore, onSubmitRFPClick }: HeroProps) {
+export default function Hero({ theme, onScrollToExplore, onSubmitRFPClick }: HeroProps) {
   return (
     <section
       id="hero"

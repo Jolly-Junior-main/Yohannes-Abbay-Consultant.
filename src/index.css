@@ -48,11 +48,17 @@
   }
 }
 
-/* Custom smooth scrolling */
+/* Custom smooth scrolling and adaptive themes */
 html {
   scroll-behavior: smooth;
   background-color: #0a0a0a;
   color: #f5f5f5;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html.light {
+  background-color: #fafaf9; /* Warm stone-50 */
+  color: #121212;
 }
 
 /* Scrollbar styling */
@@ -62,10 +68,19 @@ html {
 }
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
+  transition: background-color 0.5s ease;
 }
+html.light ::-webkit-scrollbar-track {
+  background: #fafaf9;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #262626;
   border-radius: 3px;
+  transition: background-color 0.5s ease;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #d6d3d1; /* stone-300 */
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #a37c54;
