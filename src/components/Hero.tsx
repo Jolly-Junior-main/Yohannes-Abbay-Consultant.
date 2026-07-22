@@ -5,7 +5,7 @@
 
 import React from "react";
 import { ArrowDown, CornerDownRight } from "lucide-react";
-import { getAssetPath } from "./FeaturedProjects";
+import heroBuildingImg from "../assets/images/yacae_hero_building_1784558352200.jpg";
 
 interface HeroProps {
   theme?: "light" | "dark";
@@ -22,7 +22,7 @@ export default function Hero({ theme, onScrollToExplore, onSubmitRFPClick }: Her
       {/* Immersive Background Image with Parallax & Dark Gradients */}
       <div className="absolute inset-0 z-0 select-none">
         <img
-          src={getAssetPath("/images/yacae_hero_building_1784558352200.jpg")}
+          src={heroBuildingImg}
           alt="CBE Heights Skyscrapers"
           className="w-full h-full object-cover object-center scale-105 filter brightness-90 saturate-75 opacity-60 transition-transform duration-1000"
           referrerPolicy="no-referrer"
