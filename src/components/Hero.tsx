@@ -26,6 +26,13 @@ export default function Hero({ theme, onScrollToExplore, onSubmitRFPClick }: Her
           alt="CBE Heights Skyscrapers"
           className="w-full h-full object-cover object-center scale-105 filter brightness-90 saturate-75 opacity-60 transition-transform duration-1000"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.dataset.triedFallback) {
+              target.dataset.triedFallback = "true";
+              target.src = "/images/yacae_hero_building_1784558352200.jpg";
+            }
+          }}
         />
         {/* Multi-layered dark architectural gradients to build deep cinematic contrast */}
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/40 to-charcoal-950/75 z-10" />

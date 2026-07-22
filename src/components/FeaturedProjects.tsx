@@ -132,6 +132,18 @@ export default function FeaturedProjects({ theme = "dark", onProjectClick }: Fea
                     alt={project.subtitle}
                     className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.dataset.triedFallback) {
+                        target.dataset.triedFallback = "true";
+                        const src = project.image || "";
+                        const fileNameWithHash = src.split('/').pop() || "";
+                        const baseName = fileNameWithHash.split('-')[0];
+                        if (baseName && baseName.startsWith("yacae_")) {
+                          target.src = getAssetPath(`/images/${baseName}.jpg`);
+                        }
+                      }
+                    }}
                   />
 
                   {/* Top category pill */}

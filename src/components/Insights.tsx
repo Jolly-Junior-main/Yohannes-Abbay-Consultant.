@@ -81,6 +81,18 @@ export default function Insights({ theme = "dark", onInsightClick }: InsightsPro
                 alt={featuredInsight.title}
                 className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-102 transition-all duration-700"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.dataset.triedFallback) {
+                    target.dataset.triedFallback = "true";
+                    const src = featuredInsight.image || "";
+                    const fileNameWithHash = src.split('/').pop() || "";
+                    const baseName = fileNameWithHash.split('-')[0];
+                    if (baseName && baseName.startsWith("yacae_")) {
+                      target.src = getAssetPath(`/images/${baseName}.jpg`);
+                    }
+                  }
+                }}
               />
               {/* Premium dark gradient scrim */}
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/40 to-charcoal-950/25 z-10"></div>

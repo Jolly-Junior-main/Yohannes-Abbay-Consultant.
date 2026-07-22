@@ -81,6 +81,18 @@ export default function ProjectDetailModal({
                     alt={project.title}
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.dataset.triedFallback) {
+                        target.dataset.triedFallback = "true";
+                        const src = project.image || "";
+                        const fileNameWithHash = src.split('/').pop() || "";
+                        const baseName = fileNameWithHash.split('-')[0];
+                        if (baseName && baseName.startsWith("yacae_")) {
+                          target.src = getAssetPath(`/images/${baseName}.jpg`);
+                        }
+                      }
+                    }}
                   />
                 </div>
 
@@ -326,6 +338,18 @@ export default function ProjectDetailModal({
                     alt={insight.title}
                     className="w-full h-full object-cover grayscale brightness-90"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.dataset.triedFallback) {
+                        target.dataset.triedFallback = "true";
+                        const src = insight.image || "";
+                        const fileNameWithHash = src.split('/').pop() || "";
+                        const baseName = fileNameWithHash.split('-')[0];
+                        if (baseName && baseName.startsWith("yacae_")) {
+                          target.src = getAssetPath(`/images/${baseName}.jpg`);
+                        }
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/80 to-transparent"></div>
                 </div>
