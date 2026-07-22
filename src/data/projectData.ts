@@ -14,7 +14,7 @@ export const projectsData: Project[] = [
     location: "Addis Ababa, Ethiopia",
     year: "2025",
     scale: "120,000 m²",
-    image: "/images/yacae_civic_center_1784558368652.jpg",
+    image: "/images/yacae_campus_complex_1784715341065.jpg",
     description: "A monumental civic intervention that blends modern sculptural concrete forms with historic architectural references. The project serves as the legislative, administrative, and public heart of the district, featuring passive cooling facades, integrated water features, and porous pedestrian pathways.",
     architects: "Yohannes Abbay, Chief Architect",
     highlights: [
@@ -38,7 +38,7 @@ export const projectsData: Project[] = [
     location: "Addis Ababa, Ethiopia",
     year: "2024",
     scale: "185,000 m²",
-    image: "/images/yacae_hero_building_1784558352200.jpg",
+    image: "/images/yacae_corporate_tower_1784715361395.jpg",
     description: "An iconic silhouette rising from the central financial district. Inspired by the timeless verticality of traditional Ethiopian stone monolithic stelae, this structure implements cutting-edge double-skin active breathing facade technology to achieve climate-adapted interior comfort with minimal reliance on heating and cooling systems.",
     architects: "YACAE High-Rise Studio & Partners",
     highlights: [
@@ -86,7 +86,7 @@ export const projectsData: Project[] = [
     location: "Hawassa, Ethiopia",
     year: "2025",
     scale: "12,500 m²",
-    image: "/images/yacae_museum_1784558383744.jpg",
+    image: "/images/yacae_sunset_building_1784715391759.jpg",
     description: "An eco-resort master plan featuring structures built entirely from sustainably harvested local highland bamboo. Combining traditional weaving methodologies with modern structural engineering, the pavilions achieve exceptional durability and a near-zero carbon footprint.",
     architects: "YACAE Sustainability Lab",
     highlights: [
@@ -158,7 +158,7 @@ export const projectsData: Project[] = [
     location: "Gibe River, Ethiopia",
     year: "2025",
     scale: "15,000 m²",
-    image: "/images/yacae_drafting_desk_1784558399848.jpg",
+    image: "/images/yacae_sunset_building_1784715391759.jpg",
     description: "An elegant, architectural intervention at a major hydroelectric node, housing turbine exhibition rooms, control facilities, and a research institute. The design uses flowing, curvilinear concrete volumes that mirror the fluid dynamics of the river system.",
     architects: "YACAE Infrastructure Studio",
     highlights: [
@@ -206,7 +206,7 @@ export const projectsData: Project[] = [
     location: "Entoto Hills, Ethiopia",
     year: "2026",
     scale: "8,500 m²",
-    image: "/images/yacae_museum_1784558383744.jpg",
+    image: "/images/yacae_sunset_building_1784715391759.jpg",
     description: "Nestled high in the eucalyptus forests of Mt. Entoto, this observatory and wellness lodge is designed to touch the ground lightly. Circular structural modules are raised on steel stilts, preserving the native forest roots and minimizing soil disruption.",
     architects: "YACAE High-Altitude Studio",
     highlights: [
@@ -230,7 +230,7 @@ export const projectsData: Project[] = [
     location: "Addis Ababa, Ethiopia",
     year: "2025",
     scale: "75,000 m²",
-    image: "/images/yacae_hero_building_1784558352200.jpg",
+    image: "/images/yacae_transit_hub_1784715376456.jpg",
     description: "A state-of-the-art transit interchange connecting the central Light Rail Transit (LRT) network with regional bus systems. The terminal features a massive soaring space-frame roof that provides shelter, channels light, and facilitates natural air movement.",
     architects: "YACAE Infrastructure Studio",
     highlights: [
@@ -254,7 +254,7 @@ export const projectsData: Project[] = [
     location: "Bahir Dar, Ethiopia",
     year: "2026",
     scale: "320,000 m²",
-    image: "/images/yacae_civic_center_1784558368652.jpg",
+    image: "/images/yacae_campus_complex_1784715341065.jpg",
     description: "An ambitious urban renewal scheme transforming the Blue Nile riverfront into a vibrant, pedestrian-only civic park, cultural walk, and ecological sanctuary. The design respects the delicate riverine ecosystem while providing world-class public infrastructure.",
     architects: "YACAE Master Planning Division",
     highlights: [
@@ -278,7 +278,7 @@ export const projectsData: Project[] = [
     location: "Adama, Ethiopia",
     year: "2024",
     scale: "92,000 m²",
-    image: "/images/yacae_drafting_desk_1784558399848.jpg",
+    image: "/images/yacae_corporate_tower_1784715361395.jpg",
     description: "A futuristic commercial exchange hub located at a vital economic node. The building features an advanced double-curvature structural skin designed to withstand the intense thermal expansions and high winds characteristic of the Rift Valley plains.",
     architects: "Senior Partner Yohannes Abbay",
     highlights: [
@@ -302,7 +302,7 @@ export const projectsData: Project[] = [
     location: "Addis Ababa, Ethiopia",
     year: "2025",
     scale: "28,000 m²",
-    image: "/images/yacae_museum_1784558383744.jpg",
+    image: "/images/yacae_campus_complex_1784715341065.jpg",
     description: "A sensitive contemporary extension of the historic library building, housing rare manuscripts, modern digital archives, and silent reading gardens. The design pays homage to ancient parchment scrolls with curved, layered architectural forms.",
     architects: "Hana Kebede, Lead Architect",
     highlights: [
