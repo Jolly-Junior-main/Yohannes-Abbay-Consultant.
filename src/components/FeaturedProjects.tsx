@@ -11,6 +11,16 @@ import { Project } from "../types";
 // Helper function to resolve asset paths relative to Vite BASE_URL for robust GitHub / Subdirectory deployments
 export const getAssetPath = (path: string): string => {
   if (!path) return "";
+  if (
+    path.startsWith("http") ||
+    path.startsWith("data:") ||
+    path.startsWith("blob:") ||
+    path.startsWith("/src/") ||
+    path.startsWith("/assets/") ||
+    path.startsWith("./assets/")
+  ) {
+    return path;
+  }
   if (path.startsWith("/")) {
     const base = (import.meta as any).env?.BASE_URL || "/";
     const cleanBase = base.endsWith("/") ? base : `${base}/`;
